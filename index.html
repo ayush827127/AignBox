@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Contestant Details</title>
+</head>
+
+<body>
+  <header>
+    <button id="showDetailsBtn">Show Contestant Details</button>
+  </header>
+  <div class="container">
+    <h1>Contestant Registration</h1>
+    <form action="register.php" method="POST" enctype="multipart/form-data" id="form">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="fullName" required>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+      <label for="image">Image:</label>
+      <input type="file" id="image" name="uploadFile" required>
+      <button type="submit" name="Register">Submit</button>
+    </form>
+  </div>
+  <script>
+    const showDetailsBtn = document.getElementById('showDetailsBtn');
+    showDetailsBtn.addEventListener('click', () => {
+      window.location.href = 'contestant.php';
+    });
+
+    // Get a reference to the form element
+    var form = document.getElementById('form');
+
+    // Add a key listener to the form
+    form.addEventListener("keyup", function (event) {
+      // Check if the "Enter" key was pressed (key code 13)
+      if (event.keyCode === 13) {
+        // Prevent the default behavior of the "Enter" key (prevents line break)
+        event.preventDefault();
+        var name = document.getElementById('name');
+        var email = document.getElementById('email');
+        var image = document.getElementById('image');
+        if ((name.value != '') && (email.value != '') && (image.value != null)) {
+          // Submit the form
+          form.submit();
+        }
+      }
+    });
+  </script>
+</body>
+<style>
+  .container {
+    margin: 0rem 20vw;
+  }
+</style>
+
+</html>
